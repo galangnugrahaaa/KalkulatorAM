@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator</title>
@@ -20,30 +21,39 @@
         <!-- Button Grid -->
         <div class="button">
 
-            <button class="btn" onclick="appendValue('7')">7</button>
-            <button class="btn" onclick="appendValue('8')">8</button>
-            <button class="btn" onclick="appendValue('9')">9</button>
-            <button class="btn operator" onclick="appendValue('/')">/</button>
+    <!-- Baris 1 -->
+    <button class="btn operator" onclick="deleteLast()">⌫</button>
+    <button class="btn" onclick="appendValue('7')">7</button>
+    <button class="btn" onclick="appendValue('8')">8</button>
+    <button class="btn" onclick="appendValue('9')">9</button>
 
-            <button class="btn" onclick="appendValue('4')">4</button>
-            <button class="btn" onclick="appendValue('5')">5</button>
-            <button class="btn" onclick="appendValue('6')">6</button>
-            <button class="btn operator" onclick="appendValue('*')">*</button>
+    <!-- Baris 2 -->
+    <button class="btn operator" onclick="appendValue('/')">/</button>
+    <button class="btn" onclick="appendValue('4')">4</button>
+    <button class="btn" onclick="appendValue('5')">5</button>
+    <button class="btn" onclick="appendValue('6')">6</button>
 
-            <button class="btn" onclick="appendValue('1')">1</button>
-            <button class="btn" onclick="appendValue('2')">2</button>
-            <button class="btn" onclick="appendValue('3')">3</button>
-            <button class="btn operator" onclick="appendValue('-')">-</button>
+    <!-- Baris 3 -->
+    <button class="btn operator" onclick="appendValue('*')">*</button>
+    <button class="btn" onclick="appendValue('1')">1</button>
+    <button class="btn" onclick="appendValue('2')">2</button>
+    <button class="btn" onclick="appendValue('3')">3</button>
 
-            <button class="btn" onclick="appendValue('0')">0</button>
-            <button class="btn" onclick="appendValue('.')">.</button>
-            <button class="btn operator" onclick="calculate()">=</button>
-            <button class="btn operator" onclick="appendValue('+')">+</button>
+    <!-- Baris 4 -->
+    <button class="btn operator" onclick="appendValue('-')">-</button>
+    <button class="btn" onclick="appendValue('0')">0</button>
+    <button class="btn" onclick="appendValue('.')">.</button>
+    <button class="btn operator" onclick="calculate()">=</button>
 
-        </div>
+    <!-- Baris 5: Tombol + dan Reset Angka di 1 baris -->
+    <button class="btn operator" onclick="appendValue('+')">+</button>
+    <button class="btn reset-span" onclick="clearDisplay()">Reset Angka</button>
+
+    </div>
+
+
 
         <!-- Reset Button (di luar grid angka agar rapi) -->
-        <button class="btn clear" onclick="clearDisplay()">Reset Angka</button>
 
         <!-- History -->
         <div class="history-container">
