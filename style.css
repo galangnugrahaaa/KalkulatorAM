@@ -17,8 +17,7 @@ body {
 ================================= */
 .judul {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     font-size: 28px;
     font-weight: bold;
     color: #333;
@@ -38,28 +37,28 @@ body {
 /* Display */
 #display {
     width: 93%;
-    height: 45px;              /* lebih tipis */
+    height: 45px;
     margin-bottom: 15px;
-    font-size: 22px;           /* ukuran angka pas */
+    font-size: 22px;
     text-align: right;
-    padding: 8px 12px;         /* padding lebih kecil */
+    padding: 8px 12px;
     border: 1px solid #d4d4d4;
-    border-radius: 8px;        /* radius lebih natural */
+    border-radius: 8px;
     background: #fafafa;
     color: #333;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* efek lembut */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
 /* ===============================
-   BUTTON GRID (lebih rapi)
+   BUTTON GRID
 ================================= */
 .button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 10px;
 }
 
-/* Ukuran tombol seragam */
+/* Default Button */
 .btn {
     height: 55px;
     font-size: 20px;
@@ -81,37 +80,38 @@ body {
     background: #bcbcbc;
 }
 
-/* Tombol operator */
-.operator {
-    background: #666;
+/* Operator Buttons */
+.btn.operator {
+    background-color: #666;
     color: white;
 }
 
-.operator:hover {
-    background: #555;
+.btn.operator:hover {
+    background-color: #555;
 }
 
-.operator:active {
-    background: #3d3d3d;
+.btn.operator:active {
+    background-color: #3d3d3d;
 }
 
-/* Tombol Reset melebar */
-.clear {
-    margin-top: 15px;
-    width: 100%;
-    height: 50px;
+/* Reset Button span 3 kolom */
+.reset-span {
+    grid-column: span 3;
+    height: 55px;
     font-size: 18px;
-    background: #1e3a8a;
-    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e3a8a;      /* ← WARNA UTAMA */
+    color: white;             /* ← AGAR TEKS JELAS */
     border-radius: 10px;
 }
-
-.clear:hover {
+.reset-span:hover {
     background: #182f6b;
 }
 
-.clear:active {
-    background-color: #162654;
+.reset-span:active {
+    background: #162654;
 }
 
 /* ===============================
@@ -156,6 +156,10 @@ body {
     font-size: 14px;
     color: #555;
 }
+
+/* ===============================
+   RESPONSIVE
+================================= */
 @media (max-width: 480px) {
 
     body {
@@ -169,7 +173,7 @@ body {
     }
 
     #display {
-        width: 83%;
+        width: 93%;
         font-size: 22px;
     }
 
@@ -186,6 +190,4 @@ body {
         width: 100%;
         max-width: 300px;
     }
-
 }
-
