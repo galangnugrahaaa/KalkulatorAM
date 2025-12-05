@@ -1,114 +1,74 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kalkulator - Fix Backspace</title>
-  <style>
-    /* --- CSS ringkas (pakai versi kamu jika mau) --- */
-    body{display:flex;flex-direction:column;align-items:center;min-height:100vh;background:#f4f4f4;font-family:Arial;padding:20px 0}
-    .calculator{background:#fff;padding:25px;width:320px;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
-    .judul{text-align:center;margin:20px 0;font-size:28px;color:#333}
-    #display{width:93%;height:45px;margin-bottom:15px;font-size:22px;text-align:right;padding:8px 12px;border:1px solid #d4d4d4;border-radius:8px;background:#fafafa;box-shadow:inset 0 1px 3px rgba(0,0,0,.1)}
-    .button{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .btn{height:55px;font-size:20px;background:#e5e5e5;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .btn.operator{background:#666;color:#fff}
-    .reset-span{grid-column:span 3;background:#1e3a8a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;height:55px}
-    .history-container{margin-top:25px;width:293px;background:#fff;padding:15px;border-radius:10px;box-shadow:0 3px 12px rgba(0,0,0,.1)}
-    footer{margin-top:25px;text-align:center;color:#555}
-  </style>
-</head>
-<body>
-  <h2 class="judul">Kalkulator Account Manager</h2>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kalkulator</title>
+        <link rel="icon" type="image" href="icon.png">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-  <div class="calculator">
-    <!-- disabled tetap bisa diubah lewat JS, tapi pakai readonly agar user tidak mencoba ketik -->
-    <input type="text" id="display" readonly />
+    <body>
 
-    <div class="button">
-      <!-- baris 1 -->
-      <button class="btn operator" onclick="deleteLast()">⌫</button>
-      <button class="btn" onclick="appendValue('7')">7</button>
-      <button class="btn" onclick="appendValue('8')">8</button>
-      <button class="btn" onclick="appendValue('9')">9</button>
+        <h2 class="judul">Kalkulator Account Manager</h2>
 
-      <!-- baris 2 -->
-      <button class="btn operator" onclick="appendValue('/')">/</button>
-      <button class="btn" onclick="appendValue('4')">4</button>
-      <button class="btn" onclick="appendValue('5')">5</button>
-      <button class="btn" onclick="appendValue('6')">6</button>
+        <div class="calculator">
 
-      <!-- baris 3 -->
-      <button class="btn operator" onclick="appendValue('*')">*</button>
-      <button class="btn" onclick="appendValue('1')">1</button>
-      <button class="btn" onclick="appendValue('2')">2</button>
-      <button class="btn" onclick="appendValue('3')">3</button>
+            <!-- Display -->
+            <input type="text" id="display" disabled>
 
-      <!-- baris 4 -->
-      <button class="btn operator" onclick="appendValue('-')">-</button>
-      <button class="btn" onclick="appendValue('0')">0</button>
-      <button class="btn" onclick="appendValue('.')">.</button>
-      <button class="btn operator" onclick="calculate()">=</button>
+            <!-- Button Grid -->
+            <div class="button">
 
-      <!-- baris 5 -->
-      <button class="btn operator" onclick="appendValue('+')">+</button>
-      <button class="btn reset-span" onclick="clearDisplay()">Reset Angka</button>
-    </div>
+        <!-- Baris 1 -->
+        <button class="btn operator" onclick="deleteLast()">⌫</button>
+        <button class="btn" onclick="appendValue('7')">7</button>
+        <button class="btn" onclick="appendValue('8')">8</button>
+        <button class="btn" onclick="appendValue('9')">9</button>
 
-    <div class="history-container">
-      <h3>Riwayat Perhitungan</h3>
-      <ul id="history-list"></ul>
-    </div>
-  </div>
+        <!-- Baris 2 -->
+        <button class="btn operator" onclick="appendValue('/')">/</button>
+        <button class="btn" onclick="appendValue('4')">4</button>
+        <button class="btn" onclick="appendValue('5')">5</button>
+        <button class="btn" onclick="appendValue('6')">6</button>
 
-  <footer>© 2025 | Kalkulator Account Manager | Made by Galang Nugraha</footer>
+        <!-- Baris 3 -->
+        <button class="btn operator" onclick="appendValue('*')">*</button>
+        <button class="btn" onclick="appendValue('1')">1</button>
+        <button class="btn" onclick="appendValue('2')">2</button>
+        <button class="btn" onclick="appendValue('3')">3</button>
 
-  <!-- SCRIPT: letakkan di bawah agar DOM sudah ada -->
-  <script>
-    // pastikan nama fungsi sesuai dengan onclick di HTML: deleteLast()
-    function appendValue(ch) {
-      const d = document.getElementById('display');
-      d.value = (d.value || '') + ch;
-    }
+        <!-- Baris 4 -->
+        <button class="btn operator" onclick="appendValue('-')">-</button>
+        <button class="btn" onclick="appendValue('0')">0</button>
+        <button class="btn" onclick="appendValue('.')">.</button>
+        <button class="btn operator" onclick="calculate()">=</button>
 
-    function clearDisplay() {
-      const d = document.getElementById('display');
-      d.value = '';
-    }
+        <!-- Baris 5: Tombol + dan Reset Angka di 1 baris -->
+        <button class="btn operator" onclick="appendValue('+')">+</button>
+        <button class="btn reset-span" onclick="clearDisplay()">Reset Angka</button>
 
-    function deleteLast() {
-      const d = document.getElementById('display');
-      // safety: jika null, hentikan
-      if (!d) return;
-      d.value = d.value.slice(0, -1);
-      // untuk debugging: uncomment baris ini bila perlu
-      // console.log('deleteLast called, new value:', d.value);
-    }
+        </div>
 
-    function calculate() {
-      const d = document.getElementById('display');
-      try {
-        // hindari eval langsung di project besar, tapi untuk contoh cukup aman jika input dikontrol lewat tombol
-        const result = Function('"use strict";return (' + (d.value || '0') + ')')();
-        // tulis hasil dan simpan ke riwayat
-        const history = document.getElementById('history-list');
-        const item = document.createElement('li');
-        item.textContent = d.value + ' = ' + result;
-        history.prepend(item);
-        d.value = result;
-      } catch (err) {
-        alert('Ekspresi salah');
-      }
-    }
 
-    // -- OPTIONAL: keyboard support (Backspace key)
-    document.addEventListener('keydown', function(e) {
-      // pastikan fokus bukan di input lain; karena #display readonly, kita tetap tangani backspace
-      if (e.key === 'Backspace') {
-        e.preventDefault(); // cegah navigasi browser jika diperlukan
-        deleteLast();
-      }
-    });
-  </script>
-</body>
-</html>
+
+            <!-- Reset Button (di luar grid angka agar rapi) -->
+
+            <!-- History -->
+            <div class="history-container">
+                <h3>Riwayat Perhitungan</h3>
+                <ul id="history-list"></ul>
+            </div>
+
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+
+    <footer class="footer">
+        © 2025 | Kalkulator Account Manager | Made by Galang Nugraha
+    </footer>
+
+    </html>
