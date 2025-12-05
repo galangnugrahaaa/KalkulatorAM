@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="icon" type="image" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2 class="judul">Kalkulator Account Manager</h2>
+
+    <div class="calculator">
+
+        <!-- Display -->
+        <input type="text" id="display" disabled>
+
+        <!-- Button Grid -->
+        <div class="button">
+
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn operator" onclick="appendValue('/')">/</button>
+
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn operator" onclick="appendValue('*')">*</button>
+
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn operator" onclick="appendValue('-')">-</button>
+
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn operator" onclick="calculate()">=</button>
+            <button class="btn operator" onclick="appendValue('+')">+</button>
+
+        </div>
+
+        <!-- Reset Button (di luar grid angka agar rapi) -->
+        <button class="btn clear" onclick="clearDisplay()">Reset Angka</button>
+
+        <!-- History -->
+        <div class="history-container">
+            <h3>Riwayat Perhitungan</h3>
+            <ul id="history-list"></ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+<footer class="footer">
+    © 2025 | Kalkulator Account Manager | Made by Galang Nugraha
+</footer>
+
+</html>

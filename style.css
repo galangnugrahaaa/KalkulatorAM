@@ -1,0 +1,189 @@
+/* ===============================
+   BASE STYLE
+================================= */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px 0;
+}
+
+/* ===============================
+   TITLE
+================================= */
+.judul {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ===============================
+   CALCULATOR CONTAINER
+================================= */
+.calculator {
+    background-color: #ffffff;
+    padding: 25px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Display */
+#display {
+    width: 93%;
+    height: 45px;              /* lebih tipis */
+    margin-bottom: 15px;
+    font-size: 22px;           /* ukuran angka pas */
+    text-align: right;
+    padding: 8px 12px;         /* padding lebih kecil */
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;        /* radius lebih natural */
+    background: #fafafa;
+    color: #333;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* efek lembut */
+}
+
+/* ===============================
+   BUTTON GRID (lebih rapi)
+================================= */
+.button {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Ukuran tombol seragam */
+.btn {
+    height: 55px;
+    font-size: 20px;
+    background: #e5e5e5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover {
+    background: #d4d4d4;
+}
+
+.btn:active {
+    background: #bcbcbc;
+}
+
+/* Tombol operator */
+.operator {
+    background: #666;
+    color: white;
+}
+
+.operator:hover {
+    background: #555;
+}
+
+.operator:active {
+    background: #3d3d3d;
+}
+
+/* Tombol Reset melebar */
+.clear {
+    margin-top: 15px;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 10px;
+}
+
+.clear:hover {
+    background: #182f6b;
+}
+
+.clear:active {
+    background-color: #162654;
+}
+
+/* ===============================
+   HISTORY BOX
+================================= */
+.history-container {
+    margin-top: 25px;
+    width: 293px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.history-container h3 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    max-height: 130px;
+    overflow-y: auto;
+}
+
+#history-list li {
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* ===============================
+   FOOTER
+================================= */
+.footer {
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+@media (max-width: 480px) {
+
+    body {
+        padding: 10px 0;
+    }
+
+    .calculator {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+    }
+
+    #display {
+        width: 100%;
+        font-size: 22px;
+    }
+
+    .button {
+        gap: 10px;
+    }
+
+    .btn {
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .history-container {
+        width: 100%;
+        max-width: 300px;
+    }
+}
