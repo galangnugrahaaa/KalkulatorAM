@@ -169,7 +169,7 @@ body {
     }
 
     #display {
-        width: 100%;
+        width: 93%;
         font-size: 22px;
     }
 
@@ -186,4 +186,5 @@ body {
         width: 100%;
         max-width: 300px;
     }
+
 }
